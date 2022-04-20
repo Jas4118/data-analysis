@@ -123,7 +123,6 @@ unordered_map<string, int> withdraw_rate_professor(std::string doc_name)
                 instructor_withdrawal.insert({instructor, passes});
             }
             
-            totalStudents++;
             counter = 1;
         }
     }
