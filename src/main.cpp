@@ -5,6 +5,6 @@
 
 int main()
 {
-    calc_pass_rate_instructor("1115.csv");
+    withdraw_rate_professor("1115.csv");
     return 0;
 }
