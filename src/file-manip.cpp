@@ -6,7 +6,7 @@
 
 using namespace std;
 
-unordered_map<string, int> calc_pass_rate_instructor(std::string doc_name)
+unordered_map<unordered_map, unordered_map> calc_pass_rate_instructor(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
     std::ifstream document("data/" + doc_name);
