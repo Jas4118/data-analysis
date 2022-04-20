@@ -6,7 +6,12 @@
 
 using namespace std;
 
-unordered_map<unordered_map<string, int>, unordered_map<string, int>> calc_pass_rate_instructor(std::string doc_name)
+struct instructorPassTotal {
+    unordered_map<string, int> instructor_pass;
+    unordered_map<string, int> instructor_total;
+};
+
+instructorPassTotal calc_pass_rate_instructor(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
     std::ifstream document("data/" + doc_name);
@@ -77,7 +82,12 @@ unordered_map<unordered_map<string, int>, unordered_map<string, int>> calc_pass_
              << '\n';
     }
 
-    return instructor_passes;
+    instructorPassTotal instructorPassTotal;
+
+    instructorPassTotal.instructor_pass = instructor_passes;
+    instructorPassTotal.instructor_total = passes_total;
+
+    return instructorPassTotal;
 }
 
 unordered_map<string, int> withdraw_rate_professor(std::string doc_name)
