@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void calc_pass_rate_instructor(std::string doc_name)
+unordered_map<string, int> calc_pass_rate_instructor(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
     std::ifstream document("data/" + doc_name);
@@ -58,7 +58,7 @@ void calc_pass_rate_instructor(std::string doc_name)
     // }
 }
 
-void withdraw_rate_professor(std::string doc_name)
+unordered_map<string, int> withdraw_rate_professor(std::string doc_name)
 {
     // Calculates the withdraw rate of each instructor
     std::ifstream document("data/" + doc_name);
