@@ -5,6 +5,6 @@
 
 int main()
 {
-    calculate_pass_rate("1115.csv");
+    calc_pass_rate_instructor("1115.csv");
     return 0;
 }
