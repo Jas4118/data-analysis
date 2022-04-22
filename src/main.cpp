@@ -9,7 +9,9 @@ int main()
 
     cout << "\n\n\n\n\n\n";
 
-    count_withdraw_prof("1115.csv");
+    count_total_students_prof("1115.csv");
+
+    // count_withdraw_prof("1115.csv");
 
     return 0;
 }

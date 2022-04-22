@@ -6,12 +6,61 @@
 
 using namespace std;
 
-struct instructorPassTotal {
-    unordered_map<string, int> instructor_pass;
-    unordered_map<string, int> instructor_total;
-};
+unordered_map<string,int> count_total_students_prof(std::string doc_name)
+{
+    // Calculates the total number of students per professor
+    std::ifstream document("data/" + doc_name);
+    std::string token;
+    std::string instructor;
+    std::string grade;
 
-instructorPassTotal count_pass_rate_prof(std::string doc_name)
+    std::getline(document, token); // Get rid of headings
+    unordered_map<string, int> passes_total;
+
+    int counter = 0;
+    int totalStudents = 0;
+
+    while (std::getline(document, token, ','))
+    { 
+        // Extracts only the instructor id (column 3) and the student's grade (column 6)
+        counter++;
+        totalStudents++;
+
+        if (counter == 3)
+        {
+            instructor = token;
+
+            if (passes_total.find(instructor) == passes_total.end())
+            {
+                // If the instructor is not already in the unordered maps, we need to put it in. If they are, nothing needs to be done
+                totalStudents = 1;
+                passes_total.insert({instructor, totalStudents});
+            } else {
+                totalStudents = passes_total.at(instructor) + 1;
+                passes_total.erase(instructor);
+                passes_total.insert({instructor, totalStudents});
+            }
+        }
+        else if (counter == 6)
+        {
+            counter = 1;
+        }
+    }
+
+    cout << "\n\n\n";
+
+    cout << "KEY\tELEMENT\n";
+    for (auto itr = passes_total.begin(); itr != passes_total.end(); ++itr) {
+        cout << itr -> first
+             << '\t' 
+             << itr -> second 
+             << '\n';
+    }
+
+    return passes_total;
+}
+
+unordered_map<string, int> count_pass_rate_prof(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
     std::ifstream document("data/" + doc_name);
@@ -21,10 +70,8 @@ instructorPassTotal count_pass_rate_prof(std::string doc_name)
 
     std::getline(document, token); // Get rid of headings
     unordered_map<string, int> instructor_passes;
-    unordered_map<string, int> passes_total; //Also need to count the ratio of passes to the total number of students
 
     int counter = 0;
-    int totalStudents = 0;
 
     while (std::getline(document, token, ','))
     { 
@@ -39,7 +86,6 @@ instructorPassTotal count_pass_rate_prof(std::string doc_name)
             {
                 // If the instructor is not already in the unordered maps, we need to put it in. If they are, nothing needs to be done
                 instructor_passes.insert({instructor, 0});
-                passes_total.insert({instructor, 0});
             }
         }
         else if (counter == 6)
@@ -48,17 +94,13 @@ instructorPassTotal count_pass_rate_prof(std::string doc_name)
 
             if (grade != "F")
             {
-                //If the student did not fail (i.e., they passed), incremented the professors number of passes. Regardless, increment total students.
+                //If the student did not fail (i.e., they passed), incremented the professors number of passes.
                 int passes = instructor_passes.at(instructor);
                 passes++;
 
                 instructor_passes.erase(instructor);
                 instructor_passes.insert({instructor, passes});
             }
-            
-            totalStudents++;
-            passes_total.erase(instructor);
-            passes_total.insert({instructor, totalStudents});
 
             counter = 1;
         }
@@ -72,22 +114,7 @@ instructorPassTotal count_pass_rate_prof(std::string doc_name)
              << '\n';
     }
 
-    cout << "\n\n\n";
-
-    cout << "KEY\tELEMENT\n";
-    for (auto itr = passes_total.begin(); itr != passes_total.end(); ++itr) {
-        cout << itr -> first
-             << '\t' 
-             << itr -> second 
-             << '\n';
-    }
-
-    instructorPassTotal instructorPassTotal;
-
-    instructorPassTotal.instructor_pass = instructor_passes;
-    instructorPassTotal.instructor_total = passes_total;
-
-    return instructorPassTotal;
+    return instructor_passes;
 }
 
 unordered_map<string, int> count_withdraw_prof(std::string doc_name)
