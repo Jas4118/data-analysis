@@ -6,6 +6,7 @@
 
 void calc_pass_rate_prof(std::string doc_name)
 {
+    //Calculates and writes the pass rate per professor
     unordered_map<string, float> instructors_passes = count_pass_rate_prof(doc_name);
     unordered_map<string, float> instructors_students = count_total_students_prof(doc_name);
 
@@ -17,12 +18,14 @@ void calc_pass_rate_prof(std::string doc_name)
         it_m2 = instructors_students.cbegin(), end_m2 = instructors_students.cend();
         it_m1 != end_m1 || it_m2 != end_m2;)
     {
+        //Loop through both maps simultaneously
         if(it_m1 != end_m1) {
             string instructor = it_m1 -> first;
             float passed_students = it_m1 -> second;
             float total_students = it_m2 -> second;
 
             professor_ratio.insert({instructor, (passed_students / total_students) });
+            //Put the ratio into the new map. Do not need to check if an instructor is already in the map because that is not possible.
 
             // std::cout << "m1: " << it_m1->first << " " << it_m1->second << " | ";
             ++it_m1;
@@ -46,6 +49,7 @@ void calc_pass_rate_prof(std::string doc_name)
 
 void calc_withdraw_professor(std::string doc_name)
 {
+    //Calculates and writes the wijthdraw rate per professor
     unordered_map<string, float> instructors_withdraws = count_withdraw_prof(doc_name);
     unordered_map<string, float> instructors_students = count_total_students_prof(doc_name);
 
@@ -57,12 +61,14 @@ void calc_withdraw_professor(std::string doc_name)
         it_m2 = instructors_students.cbegin(), end_m2 = instructors_students.cend();
         it_m1 != end_m1 || it_m2 != end_m2;)
     {
+        //Loops through both maps simultaneously
         if(it_m1 != end_m1) {
             string instructor = it_m1 -> first;
             float passed_students = it_m1 -> second;
             float total_students = it_m2 -> second;
 
             professor_ratio.insert({instructor, (passed_students / total_students) });
+            //Put the ratio into the new map. Do not need to check if an instructor is already in the map because that is not possible.
 
             // std::cout << "m1: " << it_m1->first << " " << it_m1->second << " | ";
             ++it_m1;
