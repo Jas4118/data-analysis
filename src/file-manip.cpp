@@ -6,7 +6,7 @@
 
 using namespace std;
 
-unordered_map<string,int> count_total_students_prof(std::string doc_name)
+unordered_map<string,float> count_total_students_prof(std::string doc_name)
 {
     // Calculates the total number of students per professor
     std::ifstream document("data/" + doc_name);
@@ -15,7 +15,7 @@ unordered_map<string,int> count_total_students_prof(std::string doc_name)
     std::string grade;
 
     std::getline(document, token); // Get rid of headings
-    unordered_map<string, int> passes_total;
+    unordered_map<string, float> passes_total;
 
     int counter = 0;
     int totalStudents = 0;
@@ -60,7 +60,7 @@ unordered_map<string,int> count_total_students_prof(std::string doc_name)
     return passes_total;
 }
 
-unordered_map<string, int> count_pass_rate_prof(std::string doc_name)
+unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
     std::ifstream document("data/" + doc_name);
@@ -69,7 +69,7 @@ unordered_map<string, int> count_pass_rate_prof(std::string doc_name)
     std::string grade;
 
     std::getline(document, token); // Get rid of headings
-    unordered_map<string, int> instructor_passes;
+    unordered_map<string, float> instructor_passes;
 
     int counter = 0;
 
@@ -105,6 +105,8 @@ unordered_map<string, int> count_pass_rate_prof(std::string doc_name)
             counter = 1;
         }
     }
+
+    cout << "\n\n\n";
 
     cout << "KEY\tELEMENT\n";
     for (auto itr = instructor_passes.begin(); itr != instructor_passes.end(); ++itr) {
