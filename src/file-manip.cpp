@@ -47,15 +47,15 @@ unordered_map<string,float> count_total_students_prof(std::string doc_name)
         }
     }
 
-    cout << "\n\n\n";
+    // cout << "\n\n\n";
 
-    cout << "KEY\tELEMENT\n";
-    for (auto itr = passes_total.begin(); itr != passes_total.end(); ++itr) {
-        cout << itr -> first
-             << '\t' 
-             << itr -> second 
-             << '\n';
-    }
+    // cout << "KEY\tELEMENT\n";
+    // for (auto itr = passes_total.begin(); itr != passes_total.end(); ++itr) {
+    //     cout << itr -> first
+    //          << '\t' 
+    //          << itr -> second 
+    //          << '\n';
+    // }
 
     return passes_total;
 }
@@ -106,15 +106,15 @@ unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
         }
     }
 
-    cout << "\n\n\n";
+    // cout << "\n\n\n";
 
-    cout << "KEY\tELEMENT\n";
-    for (auto itr = instructor_passes.begin(); itr != instructor_passes.end(); ++itr) {
-        cout << itr -> first
-             << '\t' 
-             << itr -> second 
-             << '\n';
-    }
+    // cout << "KEY\tELEMENT\n";
+    // for (auto itr = instructor_passes.begin(); itr != instructor_passes.end(); ++itr) {
+    //     cout << itr -> first
+    //          << '\t' 
+    //          << itr -> second 
+    //          << '\n';
+    // }
 
     return instructor_passes;
 }

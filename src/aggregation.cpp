@@ -10,7 +10,7 @@ void calc_pass_rate_prof()
 
     unordered_map<string, float> professor_ratio;
 
-    cout << "\n\n\n";
+    // cout << "\n\n\n";
 
     for(auto it_m1 = instructors_passes.cbegin(), end_m1 = instructors_passes.cend(),
         it_m2 = instructors_students.cbegin(), end_m2 = instructors_students.cend();
@@ -23,17 +23,17 @@ void calc_pass_rate_prof()
 
             professor_ratio.insert({instructor, (passed_students / total_students) });
 
-            std::cout << "m1: " << it_m1->first << " " << it_m1->second << " | ";
+            // std::cout << "m1: " << it_m1->first << " " << it_m1->second << " | ";
             ++it_m1;
         }
 
         if(it_m2 != end_m2) {
-            std::cout << "m2: " << it_m2->first << " " << it_m2->second << std::endl;
+            // std::cout << "m2: " << it_m2->first << " " << it_m2->second << std::endl;
             ++it_m2;
         }
     }
 
-    cout << "\n\n\n";
+    // cout << "\n\n\n";
 
     for (auto itr = professor_ratio.begin(); itr != professor_ratio.end(); ++itr) {
         cout << itr -> first
