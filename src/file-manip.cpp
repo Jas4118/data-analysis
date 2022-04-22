@@ -9,7 +9,7 @@ using namespace std;
 unordered_map<string,float> count_total_students_prof(std::string doc_name)
 {
     // Calculates the total number of students per professor
-    std::ifstream document("data/" + doc_name);
+    std::ifstream document("data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -63,7 +63,7 @@ unordered_map<string,float> count_total_students_prof(std::string doc_name)
 unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
-    std::ifstream document("data/" + doc_name);
+    std::ifstream document("data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -123,7 +123,7 @@ unordered_map<string, float> count_withdraw_prof(std::string doc_name)
 {
     // Calculates the withdraw rate of each instructor. Note that we do not need to calculate the total number of students again in this function
     // because the total will be the same for each professor regardless.
-    std::ifstream document("data/" + doc_name);
+    std::ifstream document("data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;

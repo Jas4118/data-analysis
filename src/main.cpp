@@ -6,7 +6,12 @@
 
 int main()
 {
-    calc_withdraw_professor("1115.csv");
+    string file;
+
+    cout << "Please enter the name of the file you would like to analyze (1115, 3115, or 3130). Extension not necessary. ";
+    cin >> file;
+
+    calc_withdraw_professor(file);
 
     return 0;
 }
