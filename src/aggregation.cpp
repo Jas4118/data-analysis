@@ -3,10 +3,10 @@
 #include <string>
 #include <unordered_map>
 
-void calc_pass_rate_prof()
+void calc_pass_rate_prof(std::string doc_name)
 {
-    unordered_map<string, float> instructors_passes = count_pass_rate_prof("1115.csv");
-    unordered_map<string, float> instructors_students = count_total_students_prof("1115.csv");
+    unordered_map<string, float> instructors_passes = count_pass_rate_prof(doc_name);
+    unordered_map<string, float> instructors_students = count_total_students_prof(doc_name);
 
     unordered_map<string, float> professor_ratio;
 

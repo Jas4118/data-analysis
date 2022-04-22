@@ -12,7 +12,7 @@ int main()
 
     // count_total_students_prof("1115.csv");
 
-    calc_pass_rate_prof();
+    calc_pass_rate_prof("1115.csv");
 
     return 0;
 }
