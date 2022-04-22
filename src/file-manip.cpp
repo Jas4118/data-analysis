@@ -119,7 +119,7 @@ unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
     return instructor_passes;
 }
 
-unordered_map<string, int> count_withdraw_prof(std::string doc_name)
+unordered_map<string, float> count_withdraw_prof(std::string doc_name)
 {
     // Calculates the withdraw rate of each instructor. Note that we do not need to calculate the total number of students again in this function
     // because the total will be the same for each professor regardless.
@@ -129,7 +129,7 @@ unordered_map<string, int> count_withdraw_prof(std::string doc_name)
     std::string grade;
 
     std::getline(document, token); // Get rid of headings
-    unordered_map<string, int> instructor_withdrawal;
+    unordered_map<string, float> instructor_withdrawal;
 
     int counter = 0;
 
@@ -165,6 +165,16 @@ unordered_map<string, int> count_withdraw_prof(std::string doc_name)
             counter = 1;
         }
     }
+
+    // cout << "\n\n\n";
+
+    // cout << "KEY\tELEMENT\n";
+    // for (auto itr = instructor_withdrawal.begin(); itr != instructor_withdrawal.end(); ++itr) {
+    //     cout << itr -> first
+    //          << '\t' 
+    //          << itr -> second 
+    //          << '\n';
+    // }
 
 
     return instructor_withdrawal;
