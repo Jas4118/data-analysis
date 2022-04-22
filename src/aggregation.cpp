@@ -1,7 +1,8 @@
-#include "file-manip.cpp"
 #include <cstdio>
 #include <string>
 #include <unordered_map>
+
+#include "file-manip.cpp"
 
 void calc_pass_rate_prof(std::string doc_name)
 {
