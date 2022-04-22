@@ -11,7 +11,7 @@ struct instructorPassTotal {
     unordered_map<string, int> instructor_total;
 };
 
-instructorPassTotal calc_pass_rate_instructor(std::string doc_name)
+instructorPassTotal count_pass_rate_prof(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
     std::ifstream document("data/" + doc_name);
@@ -90,7 +90,7 @@ instructorPassTotal calc_pass_rate_instructor(std::string doc_name)
     return instructorPassTotal;
 }
 
-unordered_map<string, int> withdraw_rate_professor(std::string doc_name)
+unordered_map<string, int> count_withdraw_prof(std::string doc_name)
 {
     // Calculates the withdraw rate of each instructor. Note that we do not need to calculate the total number of students again in this function
     // because the total will be the same for each professor regardless.
