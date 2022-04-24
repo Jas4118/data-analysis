@@ -4,6 +4,15 @@
 
 #include "file-manip.cpp"
 
+void calc_withdrawal_course(std::string doc_name)
+{
+    //Calculates and writes the withdraw rate per course
+
+    cout << "\nThis is the percent of students that withdrew from the course " + doc_name + ", whether officially or unofficially.\n\n";
+
+    cout << count_withdraw_course(doc_name);
+}
+
 void calc_pass_rate_course(std::string doc_name)
 {
     //Calculates and writes the pass rate per course

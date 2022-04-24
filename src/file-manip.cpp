@@ -6,9 +6,46 @@
 
 using namespace std;
 
+float count_withdraw_course(std::string doc_name)
+{
+    // Calculates the total number of studens that withdrew per course
+    std::ifstream document("../data/" + doc_name + ".csv");
+    std::string token;
+    std::string instructor;
+    std::string grade;
+
+    std::getline(document, token); // Get rid of headings
+
+    int counter = 0;
+    float totalStudents = 0;
+    float withdrawedStudents = 0;
+
+    while (std::getline(document, token, ','))
+    {
+        // Extracts only the student's grade (column 6)
+        counter++;
+
+        if (counter == 6)
+        {
+            //The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
+            grade = token.substr(0, 1);
+            totalStudents++;
+
+            if (grade == "W" || grade == "WU")
+            {
+                withdrawedStudents++;
+            }
+
+            counter = 1;
+        }
+    }
+
+    return withdrawedStudents / totalStudents;
+}
+
 float count_passed_course(std::string doc_name)
 {
-    // Calculates the total number of students per professor
+    // Calculates the total number of studens that passed per course
     std::ifstream document("../data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;

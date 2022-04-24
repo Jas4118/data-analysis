@@ -13,7 +13,8 @@ int main()
 
     // calc_pass_rate_prof(file);
     // calc_withdraw_professor(file);
-    calc_pass_rate_course(file);
+    // calc_pass_rate_course(file);
+    calc_withdrawal_course(file);
 
     return 0;
 }
