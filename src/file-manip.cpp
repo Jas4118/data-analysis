@@ -144,7 +144,8 @@ unordered_map<string, float> count_total_students_prof(std::string doc_name)
 
             if (passes_total.find(instructor) == passes_total.end())
             {
-                // If the instructor is not already in the unordered maps, we need to put it in. If they are, nothing needs to be done
+                // If the instructor is not already in the unordered maps, we need to put it in. If they are, we need to update the total number
+                // of studets they have.
                 totalStudents = 1;
                 passes_total.insert({instructor, totalStudents});
             }
