@@ -6,7 +6,43 @@
 
 using namespace std;
 
-unordered_map<string,float> count_total_students_prof(std::string doc_name)
+float count_passed_course(std::string doc_name)
+{
+    // Calculates the total number of students that passed per course
+    std::ifstream document("../data/" + doc_name + ".csv");
+    std::string token;
+    std::string instructor;
+    std::string grade;
+
+    std::getline(document, token); // Get rid of headings
+
+    int counter = 0;
+    int totalStudents = 0;
+    int passedStudents = 0;
+
+    while (std::getline(document, token, ','))
+    {
+        // Extracts only the instructor id (column 3) and the student's grade (column 6)
+        counter++;
+
+        if (counter == 6)
+        {
+            if (token != "F")
+            {
+                passedStudents++;
+            }
+
+            totalStudents++;
+            counter = 0;
+        }
+    }
+
+    cout << passedStudents / totalStudents;
+
+    return passedStudents / totalStudents;
+}
+
+unordered_map<string, float> count_total_students_prof(std::string doc_name)
 {
     // Calculates the total number of students per professor
     std::ifstream document("../data/" + doc_name + ".csv");
@@ -21,7 +57,7 @@ unordered_map<string,float> count_total_students_prof(std::string doc_name)
     int totalStudents = 0;
 
     while (std::getline(document, token, ','))
-    { 
+    {
         // Extracts only the instructor id (column 3) and the student's grade (column 6)
         counter++;
         totalStudents++;
@@ -35,7 +71,9 @@ unordered_map<string,float> count_total_students_prof(std::string doc_name)
                 // If the instructor is not already in the unordered maps, we need to put it in. If they are, nothing needs to be done
                 totalStudents = 1;
                 passes_total.insert({instructor, totalStudents});
-            } else {
+            }
+            else
+            {
                 totalStudents = passes_total.at(instructor) + 1;
                 passes_total.erase(instructor);
                 passes_total.insert({instructor, totalStudents});
@@ -52,8 +90,8 @@ unordered_map<string,float> count_total_students_prof(std::string doc_name)
     // cout << "KEY\tELEMENT\n";
     // for (auto itr = passes_total.begin(); itr != passes_total.end(); ++itr) {
     //     cout << itr -> first
-    //          << '\t' 
-    //          << itr -> second 
+    //          << '\t'
+    //          << itr -> second
     //          << '\n';
     // }
 
@@ -74,7 +112,7 @@ unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
     int counter = 0;
 
     while (std::getline(document, token, ','))
-    { 
+    {
         // Extracts only the instructor id (column 3) and the student's grade (column 6)
         counter++;
 
@@ -90,11 +128,11 @@ unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
         }
         else if (counter == 6)
         {
-            grade = token.substr(0,1);
+            grade = token.substr(0, 1);
 
             if (grade != "F")
             {
-                //If the student did not fail (i.e., they passed), incremented the professors number of passes.
+                // If the student did not fail (i.e., they passed), incremented the professors number of passes.
                 int passes = instructor_passes.at(instructor);
                 passes++;
 
@@ -111,8 +149,8 @@ unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
     // cout << "KEY\tELEMENT\n";
     // for (auto itr = instructor_passes.begin(); itr != instructor_passes.end(); ++itr) {
     //     cout << itr -> first
-    //          << '\t' 
-    //          << itr -> second 
+    //          << '\t'
+    //          << itr -> second
     //          << '\n';
     // }
 
@@ -134,7 +172,7 @@ unordered_map<string, float> count_withdraw_prof(std::string doc_name)
     int counter = 0;
 
     while (std::getline(document, token, ','))
-    { 
+    {
         // Extracts only the instructor id (column 3) and the student's grade (column 6)
         counter++;
 
@@ -150,18 +188,18 @@ unordered_map<string, float> count_withdraw_prof(std::string doc_name)
         }
         else if (counter == 6)
         {
-            grade = token.substr(0,1);
+            grade = token.substr(0, 1);
 
             if (grade == "W")
             {
-                //If the student withdrew, incremented the professors number of passes. Do nothing they did not withdraw.
+                // If the student withdrew, incremented the professors number of passes. Do nothing they did not withdraw.
                 int passes = instructor_withdrawal.at(instructor);
                 passes++;
 
                 instructor_withdrawal.erase(instructor);
                 instructor_withdrawal.insert({instructor, passes});
             }
-            
+
             counter = 1;
         }
     }
@@ -171,11 +209,10 @@ unordered_map<string, float> count_withdraw_prof(std::string doc_name)
     // cout << "KEY\tELEMENT\n";
     // for (auto itr = instructor_withdrawal.begin(); itr != instructor_withdrawal.end(); ++itr) {
     //     cout << itr -> first
-    //          << '\t' 
-    //          << itr -> second 
+    //          << '\t'
+    //          << itr -> second
     //          << '\n';
     // }
-
 
     return instructor_withdrawal;
 }
