@@ -11,18 +11,15 @@ void analyze_data(std::string doc_name, std::string season, std::ofstream& outpu
 int main()
 {
     string course;
-    
+
     cout << "Please enter the name of the course you would like to analyze (1115, 3115, or 3130). Do not include the extension.\n";
     cin >> course;
 
     ofstream outputFile;
     outputFile.open("../output/" + course + ".txt");
 
-    transform(season.begin(), season.end(), season.begin(), ::tolower);
-    //Change season input to lowercase to avoid being case sensitive
-
     if (course == "1115" || course == "3115" || course == "3130") {
-        analyze_data(course, season, outputFile);
+        analyze_data(course, outputFile);
     } else {
         cout << "You have entered an invalid course number.";
         outputFile << "You have entered an invalid course number.";
@@ -32,7 +29,7 @@ int main()
     return 0;   
 }
 
-void analyze_data(std::string doc_name, std::string season, std::ofstream& outputFile) {
+void analyze_data(std::string doc_name, std::ofstream& outputFile) {
     //Calls all of the functions needed to output all of the analyzed data
     calc_pass_rate_prof(doc_name, outputFile);
     calc_withdraw_prof(doc_name, outputFile);
