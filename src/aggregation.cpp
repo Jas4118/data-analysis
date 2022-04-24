@@ -8,7 +8,7 @@ void calc_withdrawal_course(std::string doc_name)
 {
     //Calculates and writes the withdraw rate per course
 
-    cout << "\n\nThis is the percent of students that withdrew from the course " + doc_name + "\n\n";
+    cout << "\n\nThis is the percent of students that withdrew from the course " + doc_name + ".\n\n";
 
     cout << count_withdraw_course(doc_name);
 }
