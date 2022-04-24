@@ -8,7 +8,7 @@ void calc_withdrawal_course(std::string doc_name)
 {
     //Calculates and writes the withdraw rate per course
 
-    cout << "\nThis is the percent of students that withdrew from the course " + doc_name + ", whether officially or unofficially.\n\n";
+    cout << "\n\nThis is the percent of students that withdrew from the course " + doc_name + "\n\n";
 
     cout << count_withdraw_course(doc_name);
 }
@@ -17,7 +17,7 @@ void calc_pass_rate_course(std::string doc_name)
 {
     //Calculates and writes the pass rate per course
 
-    cout << "\nThis is the percent of students that did not fail, withdraw, or withdraw unofficially for the course " + doc_name + ".\n\n";
+    cout << "\nThis is the percent of students that passed the course " + doc_name + ".\n\n";
 
     cout << count_passed_course(doc_name);
 }
@@ -55,7 +55,9 @@ void calc_pass_rate_prof(std::string doc_name)
         }
     }
 
-    cout << "\nThis is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. (if we only include the students that did not fail, an entirely different story is painted.\n\n";
+    cout << "\nThis is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. "
+    "(if we only include the students that did not fail, an entirely different story is painted). "
+    "From here on out. this will be referred to as 'passed.'\n\n";
 
     for (auto itr = professor_ratio.begin(); itr != professor_ratio.end(); ++itr) {
         cout << itr -> first
@@ -65,7 +67,7 @@ void calc_pass_rate_prof(std::string doc_name)
     }
 }
 
-void calc_withdraw_professor(std::string doc_name)
+void calc_withdraw_prof(std::string doc_name)
 {
     //Calculates and writes the wijthdraw rate per professor
     unordered_map<string, float> instructors_withdraws = count_withdraw_prof(doc_name);
@@ -74,7 +76,8 @@ void calc_withdraw_professor(std::string doc_name)
     unordered_map<string, float> professor_ratio;
 
     // cout << "\n\n\n";
-    cout << "\nThis is the percent of students that withdraw, either officially or unofficially (W or WU)\n\n";
+    cout << "\nThis is the percent of students that withdraw, either officially or unofficially (W or WU). From this point, this will be "
+    "referred to as 'withdrew.'\n\n";
 
     for(auto it_m1 = instructors_withdraws.cbegin(), end_m1 = instructors_withdraws.cend(),
         it_m2 = instructors_students.cbegin(), end_m2 = instructors_students.cend();
