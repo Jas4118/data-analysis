@@ -72,3 +72,7 @@ difference is that the per season functions will store an array of terms the fun
 <p>Another difference is that, now, the function must also check the fourth column (the term id) along with the sixth column (the student's grade). When checking the term id, the function must now save the term id into a variable. Once the program has done this and has reached the student's grade, the program must also check that the previously saved term id variable is contained in the term array that must be checked. If this condition is true, the program executes as normal.</p>
 
 <p>Finally, there is another additional condition that the program must execute before printing the percent to the output file. If the count returned a value that is not a number (nan), this means that, in the CSV file, there were no terms that matched with the terms that were given in the terms array. In this case, a unique indication is written to the output file stating that there were no terms found for the provided season. Otherwise, the program will simply print the percent like usual.</p>
+
+<h2 align="center">Additional Notes</h2>
+
+<p>You may find some output files with both correct inputs and incorrect inputs in the "completed" subfolder of the "output" folder.</p>
