@@ -16,6 +16,7 @@ void calc_withdrawal_course(std::string doc_name, std::string season)
     } else {
         cout << "\nThis is the percent of students that withdrew from the course " + doc_name + " during the " + season + " season.\n\n";
         cout << withdrawedStudents;
+        cout << "\n";
     }
 }
 
@@ -30,6 +31,7 @@ void calc_pass_rate_course(std::string doc_name, std::string season)
     } else {
         cout << "\nThis is the percent of students that passed the course " + doc_name + " during the " + season + " season.\n\n";
         cout << passedStudents;
+        cout << "\n";
     }
 }
 
