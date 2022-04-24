@@ -51,6 +51,7 @@
         "vector": "cpp",
         "xhash": "cpp",
         "xlocmon": "cpp",
-        "xloctime": "cpp"
+        "xloctime": "cpp",
+        "algorithm": "cpp"
     }
 }

@@ -1,25 +1,36 @@
 #include <cstdio>
 #include <string>
 #include <unordered_map>
+#include <cmath>
 
 #include "file-manip.cpp"
 
-void calc_withdrawal_course(std::string doc_name)
+void calc_withdrawal_course(std::string doc_name, std::string season)
 {
     //Calculates and writes the withdraw rate per course
 
-    cout << "\n\nThis is the percent of students that withdrew from the course " + doc_name + ".\n\n";
+    float withdrawedStudents = count_withdraw_course(doc_name, season);
 
-    cout << count_withdraw_course(doc_name);
+    if (isnan(withdrawedStudents)) {
+        cout << "\nNo terms were found for the " + season + " season.\n";
+    } else {
+        cout << "\nThis is the percent of students that passed the course " + doc_name + " during the " + season + " season.\n\n";
+        cout << withdrawedStudents;
+    }
 }
 
-void calc_pass_rate_course(std::string doc_name)
+void calc_pass_rate_course(std::string doc_name, std::string season)
 {
     //Calculates and writes the pass rate per course
 
-    cout << "\nThis is the percent of students that passed the course " + doc_name + ".\n\n";
+    float passedStudents = count_passed_course(doc_name, season);
 
-    cout << count_passed_course(doc_name);
+    if (isnan(passedStudents)) {
+        cout << "\nNo terms were found for the " + season + " season.\n";
+    } else {
+        cout << "\nThis is the percent of students that passed the course " + doc_name + " during the " + season + " season.\n\n";
+        cout << passedStudents;
+    }
 }
 
 void calc_pass_rate_prof(std::string doc_name)

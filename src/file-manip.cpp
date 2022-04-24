@@ -3,10 +3,13 @@
 #include <cstdio>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
-float count_withdraw_course(std::string doc_name)
+bool in_array(const std::string &value, const std::vector<std::string> &array);
+
+float count_withdraw_course(std::string doc_name, std::string season)
 {
     // Calculates the total number of studens that withdrew per course
     std::ifstream document("../data/" + doc_name + ".csv");
@@ -20,14 +23,30 @@ float count_withdraw_course(std::string doc_name)
     float totalStudents = 0;
     float withdrawedStudents = 0;
 
+    std::vector<std::string> terms = {"T04", "T08", "T12", "T16", "T20", "T23"};
+
+    std::string term;
+
+    if (season == "spring")
+    {
+        terms = {"T02", "T06", "T10", "T14", "T18", "T21"};
+    }
+
     while (std::getline(document, token, ','))
     {
         // Extracts only the student's grade (column 6)
         counter++;
 
-        if (counter == 6)
+        if (counter == 4 && in_array(token, terms))
         {
-            //The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
+            term = token;
+            // cout << token;
+            // cout << "\n";
+            continue;
+        }
+        if (counter == 6 && in_array(term, terms))
+        {
+            // The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
             grade = token.substr(0, 1);
             totalStudents++;
 
@@ -43,7 +62,7 @@ float count_withdraw_course(std::string doc_name)
     return withdrawedStudents / totalStudents;
 }
 
-float count_passed_course(std::string doc_name)
+float count_passed_course(std::string doc_name, std::string season)
 {
     // Calculates the total number of studens that passed per course
     std::ifstream document("../data/" + doc_name + ".csv");
@@ -57,14 +76,33 @@ float count_passed_course(std::string doc_name)
     float totalStudents = 0;
     float passedStudents = 0;
 
+    std::vector<std::string> terms = {"T04", "T08", "T12", "T16", "T20", "T23"};
+
+    std::string term;
+
+    if (season == "spring")
+    {
+        terms = {"T02", "T06", "T10", "T14", "T18", "T21"};
+    }
+
     while (std::getline(document, token, ','))
     {
         // Extracts only the student's grade (column 6)
         counter++;
+        // cout << token + " ";
 
-        if (counter == 6)
+        if (counter == 4 && in_array(token, terms))
         {
-            //The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
+            term = token;
+            // cout << token;
+            // cout << "\n";
+            continue;
+        }
+        if (counter == 6 && in_array(term, terms))
+        {
+            // cout << term;
+            // cout << "\n";
+            // The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
             grade = token.substr(0, 1);
             totalStudents++;
 
@@ -119,7 +157,7 @@ unordered_map<string, float> count_total_students_prof(std::string doc_name)
         }
         else if (counter == 6)
         {
-            //If we have reached the end of the line, increment the total number of students and reset the counter
+            // If we have reached the end of the line, increment the total number of students and reset the counter
             totalStudents++;
             counter = 1;
         }
@@ -255,4 +293,9 @@ unordered_map<string, float> count_withdraw_prof(std::string doc_name)
     // }
 
     return instructor_withdrawal;
+}
+
+bool in_array(const std::string &value, const std::vector<std::string> &array)
+{
+    return std::find(array.begin(), array.end(), value) != array.end();
 }
