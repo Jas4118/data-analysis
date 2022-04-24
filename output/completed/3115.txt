@@ -1,0 +1,51 @@
+This is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. (if we only include the students that did not fail, an entirely different story is painted). From here on out. this will be referred to as 'passed.'
+
+I10	0.877698
+I19	0.885714
+I11	0.612903
+I07	0.885714
+I28	0.52
+I27	0.869565
+I21	0.618497
+I06	0.826087
+I14	0.939024
+I15	0.847953
+I24	0.828571
+I22	0.742857
+I23	0.831683
+
+This is the percent of students that withdraw, either officially or unofficially (W or WU). From this point, this will be referred to as 'withdrew.'
+
+I10	0.057554
+I19	0.0714286
+I11	0.193548
+I07	0.114286
+I28	0.33
+I27	0.057971
+I21	0.260116
+I06	0.115942
+I14	0.0243902
+I15	0.111111
+I24	0.0857143
+I22	0.257143
+I23	0.148515
+
+No terms were found for the fall season.
+
+No terms were found for the spring season.
+
+No terms were found for the fall season.
+
+No terms were found for the spring season.
+
+
+
+This is the overall percent of students that passed the course 3115.
+
+0.790625
+
+
+
+This is the overall percent of students that withdrew from the course 3115.
+
+0.1375
