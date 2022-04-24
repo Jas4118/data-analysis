@@ -8,7 +8,7 @@ using namespace std;
 
 float count_passed_course(std::string doc_name)
 {
-    // Calculates the total number of students that passed per course
+    // Calculates the total number of students per professor
     std::ifstream document("../data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
@@ -17,28 +17,30 @@ float count_passed_course(std::string doc_name)
     std::getline(document, token); // Get rid of headings
 
     int counter = 0;
-    int totalStudents = 0;
-    int passedStudents = 0;
+    float totalStudents = 0;
+    float passedStudents = 0;
 
     while (std::getline(document, token, ','))
     {
-        // Extracts only the instructor id (column 3) and the student's grade (column 6)
+        // Extracts only the student's grade (column 6)
         counter++;
 
         if (counter == 6)
         {
-            if (token != "F")
+            //The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
+            grade = token.substr(0, 1);
+            totalStudents++;
+
+            if (grade != "F")
             {
                 passedStudents++;
             }
 
-            totalStudents++;
-            counter = 0;
+            counter = 1;
         }
     }
 
     cout << passedStudents / totalStudents;
-
     return passedStudents / totalStudents;
 }
 
