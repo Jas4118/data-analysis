@@ -31,7 +31,7 @@ float count_passed_course(std::string doc_name)
             grade = token.substr(0, 1);
             totalStudents++;
 
-            if (grade != "F")
+            if (grade != "F" && grade != "W" && grade != "WU")
             {
                 passedStudents++;
             }
@@ -62,7 +62,6 @@ unordered_map<string, float> count_total_students_prof(std::string doc_name)
     {
         // Extracts only the instructor id (column 3) and the student's grade (column 6)
         counter++;
-        totalStudents++;
 
         if (counter == 3)
         {
@@ -83,6 +82,8 @@ unordered_map<string, float> count_total_students_prof(std::string doc_name)
         }
         else if (counter == 6)
         {
+            //If we have reached the end of the line, increment the total number of students and reset the counter
+            totalStudents++;
             counter = 1;
         }
     }
@@ -132,7 +133,7 @@ unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
         {
             grade = token.substr(0, 1);
 
-            if (grade != "F")
+            if (grade != "F" && grade != "W" && grade != "WU")
             {
                 // If the student did not fail (i.e., they passed), incremented the professors number of passes.
                 int passes = instructor_passes.at(instructor);
@@ -192,7 +193,7 @@ unordered_map<string, float> count_withdraw_prof(std::string doc_name)
         {
             grade = token.substr(0, 1);
 
-            if (grade == "W")
+            if (grade == "W" || grade == "WU")
             {
                 // If the student withdrew, incremented the professors number of passes. Do nothing they did not withdraw.
                 int passes = instructor_withdrawal.at(instructor);

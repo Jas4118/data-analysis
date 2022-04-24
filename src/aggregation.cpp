@@ -37,7 +37,7 @@ void calc_pass_rate_prof(std::string doc_name)
         }
     }
 
-    // cout << "\n\n\n";
+    cout << "\nThis is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. (if we only include the students that did not fail, an entirely different story is painted.\n\n";
 
     for (auto itr = professor_ratio.begin(); itr != professor_ratio.end(); ++itr) {
         cout << itr -> first
@@ -56,6 +56,7 @@ void calc_withdraw_professor(std::string doc_name)
     unordered_map<string, float> professor_ratio;
 
     // cout << "\n\n\n";
+    cout << "\nThis is the percent of students that withdraw, either officially or unofficially (W or WU)\n\n";
 
     for(auto it_m1 = instructors_withdraws.cbegin(), end_m1 = instructors_withdraws.cend(),
         it_m2 = instructors_students.cbegin(), end_m2 = instructors_students.cend();
@@ -80,7 +81,7 @@ void calc_withdraw_professor(std::string doc_name)
         }
     }
 
-    cout << "\n\n\n";
+    // cout << "\n\n\n";
 
     for (auto itr = professor_ratio.begin(); itr != professor_ratio.end(); ++itr) {
         cout << itr -> first
