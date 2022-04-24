@@ -37,4 +37,6 @@ void analyze_data(std::string doc_name, std::ofstream& outputFile) {
     calc_pass_rate_course(doc_name, "spring", outputFile);
     calc_withdrawal_course(doc_name, "fall", outputFile);
     calc_withdrawal_course(doc_name, "spring", outputFile);
+    calc_overall_pass_course(doc_name, outputFile);
+    calc_overall_withdraw_course(doc_name, outputFile);
 }

@@ -9,9 +9,83 @@ using namespace std;
 
 bool in_array(const std::string &value, const std::vector<std::string> &array);
 
+float count_overall_withdraw_course(std::string doc_name)
+{
+    // Calculates the total number of students that withdrew per course
+    std::ifstream document("../data/" + doc_name + ".csv");
+    std::string token;
+    std::string instructor;
+    std::string grade;
+
+    std::getline(document, token); // Get rid of headings
+
+    int column = 0;
+    float totalStudents = 0;
+    float withdrawedStudents = 0;
+
+    while (std::getline(document, token, ','))
+    {
+        // Extracts only the student's grade (column 6)
+        column++;
+
+        if (column == 6)
+        {
+            // The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
+            grade = token.substr(0, 1);
+            totalStudents++;
+
+            if (grade == "W")
+            {
+                withdrawedStudents++;
+            }
+
+            column = 1;
+        }
+    }
+
+    return withdrawedStudents / totalStudents;
+}
+
+float count_overall_pass_course(std::string doc_name)
+{
+    // Calculates the total number of students that passed per course
+    std::ifstream document("../data/" + doc_name + ".csv");
+    std::string token;
+    std::string instructor;
+    std::string grade;
+
+    std::getline(document, token); // Get rid of headings
+
+    int column = 0;
+    float totalStudents = 0;
+    float passedStudents = 0;
+    
+    while (std::getline(document, token, ','))
+    {
+        // Extracts only the student's grade (column 6)
+        column++;
+
+        if (column == 6)
+        {
+            // The total students gets incremented no matter what, but passed students only get incremented if the grade is not equal to F
+            grade = token.substr(0, 1);
+            totalStudents++;
+
+            if (grade != "F" && grade != "W")
+            {
+                passedStudents++;
+            }
+
+            column = 1;
+        }
+    }
+
+    return passedStudents / totalStudents;
+}
+
 float count_withdraw_course(std::string doc_name, std::string season)
 {
-    // Calculates the total number of studens that withdrew per course
+    // Calculates the total number of students that withdrew per course
     std::ifstream document("../data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
@@ -64,7 +138,7 @@ float count_withdraw_course(std::string doc_name, std::string season)
 
 float count_passed_course(std::string doc_name, std::string season)
 {
-    // Calculates the total number of studens that passed per course
+    // Calculates the total number of students that passed per course
     std::ifstream document("../data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
