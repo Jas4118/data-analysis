@@ -40,7 +40,7 @@ float count_passed_course(std::string doc_name)
         }
     }
 
-    cout << passedStudents / totalStudents;
+    // cout << passedStudents / totalStudents;
     return passedStudents / totalStudents;
 }
 
