@@ -8,7 +8,7 @@ void calc_pass_rate_course(std::string doc_name)
 {
     //Calculates and writes the pass rate per course
 
-    cout << "\nThis is the percent of students that did not fail, withdraw or withdraw unofficially for the course " + doc_name + ".\n\n";
+    cout << "\nThis is the percent of students that did not fail, withdraw, or withdraw unofficially for the course " + doc_name + ".\n\n";
 
     cout << count_passed_course(doc_name);
 }
