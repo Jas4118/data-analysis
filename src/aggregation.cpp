@@ -12,6 +12,7 @@ void calc_withdrawal_course(std::string doc_name, std::string season)
     float withdrawedStudents = count_withdraw_course(doc_name, season);
 
     if (isnan(withdrawedStudents)) {
+        //If no number was returned, that means there was an error where there were no matching terms found
         cout << "\nNo terms were found for the " + season + " season.\n";
     } else {
         cout << "\nThis is the percent of students that withdrew from the course " + doc_name + " during the " + season + " season.\n\n";
@@ -27,6 +28,7 @@ void calc_pass_rate_course(std::string doc_name, std::string season)
     float passedStudents = count_passed_course(doc_name, season);
 
     if (isnan(passedStudents)) {
+        //If no number was returned, that means there was an error where there were no matching terms found
         cout << "\nNo terms were found for the " + season + " season.\n";
     } else {
         cout << "\nThis is the percent of students that passed the course " + doc_name + " during the " + season + " season.\n\n";

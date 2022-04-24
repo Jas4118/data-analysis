@@ -22,7 +22,7 @@ int main()
     if (course == "1115" || course == "3115" || course == "3130") {
         analyze_data(course, season);
     } else {
-        cout << "You have entered an invalid input.";
+        cout << "You have entered an invalid course number.";
     }
 
     return 0;   
