@@ -6,7 +6,7 @@
 
 #include "aggregation.cpp"
 
-void analyze_data(std::string doc_name, std::string season, std::ofstream& outputFile);
+void analyze_data(std::string doc_name, std::ofstream& outputFile);
 
 int main()
 {
