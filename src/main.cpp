@@ -6,10 +6,13 @@
 
 #include "aggregation.cpp"
 
-void analyze_data(std::string doc_name, std::string season);
+void analyze_data(std::string doc_name, std::string season, std::ofstream& outputFile);
 
 int main()
 {
+    ofstream outputFile;
+    outputFile.open("../output/output.txt");
+
     string course;
     string season;
 
@@ -20,19 +23,20 @@ int main()
     //Change season input to lowercase to avoid being case sensitive
 
     if (course == "1115" || course == "3115" || course == "3130") {
-        analyze_data(course, season);
+        analyze_data(course, season, outputFile);
     } else {
         cout << "You have entered an invalid course number.";
     }
 
+    cout << "Data has been successfully written to the output file.";
     return 0;   
 }
 
-void analyze_data(std::string doc_name, std::string season) {
-    calc_pass_rate_prof(doc_name);
-    calc_withdraw_prof(doc_name);
-    calc_pass_rate_course(doc_name, "fall");
-    calc_pass_rate_course(doc_name, "spring");
-    calc_withdrawal_course(doc_name, "fall");
-    calc_withdrawal_course(doc_name, "spring");
+void analyze_data(std::string doc_name, std::string season, std::ofstream& outputFile) {
+    calc_pass_rate_prof(doc_name, outputFile);
+    calc_withdraw_prof(doc_name, outputFile);
+    calc_pass_rate_course(doc_name, "fall", outputFile);
+    calc_pass_rate_course(doc_name, "spring", outputFile);
+    calc_withdrawal_course(doc_name, "fall", outputFile);
+    calc_withdrawal_course(doc_name, "spring", outputFile);
 }

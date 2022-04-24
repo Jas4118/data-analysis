@@ -5,7 +5,7 @@
 
 #include "file-manip.cpp"
 
-void calc_withdrawal_course(std::string doc_name, std::string season)
+void calc_withdrawal_course(std::string doc_name, std::string season, std::ofstream& outputFile)
 {
     //Calculates and writes the withdraw rate per course
 
@@ -13,15 +13,15 @@ void calc_withdrawal_course(std::string doc_name, std::string season)
 
     if (isnan(withdrawedStudents)) {
         //If no number was returned, that means there was an error where there were no matching terms found
-        cout << "\nNo terms were found for the " + season + " season.\n";
+        outputFile << "\nNo terms were found for the " + season + " season.\n";
     } else {
-        cout << "\nThis is the percent of students that withdrew from the course " + doc_name + " during the " + season + " season.\n\n";
-        cout << withdrawedStudents;
-        cout << "\n";
+        outputFile << "\nThis is the percent of students that withdrew from the course " + doc_name + " during the " + season + " season.\n\n";
+        outputFile << withdrawedStudents;
+        outputFile << "\n";
     }
 }
 
-void calc_pass_rate_course(std::string doc_name, std::string season)
+void calc_pass_rate_course(std::string doc_name, std::string season, std::ofstream& outputFile)
 {
     //Calculates and writes the pass rate per course
 
@@ -29,15 +29,15 @@ void calc_pass_rate_course(std::string doc_name, std::string season)
 
     if (isnan(passedStudents)) {
         //If no number was returned, that means there was an error where there were no matching terms found
-        cout << "\nNo terms were found for the " + season + " season.\n";
+        outputFile << "\nNo terms were found for the " + season + " season.\n";
     } else {
-        cout << "\nThis is the percent of students that passed the course " + doc_name + " during the " + season + " season.\n\n";
-        cout << passedStudents;
-        cout << "\n";
+        outputFile << "\nThis is the percent of students that passed the course " + doc_name + " during the " + season + " season.\n\n";
+        outputFile << passedStudents;
+        outputFile << "\n";
     }
 }
 
-void calc_pass_rate_prof(std::string doc_name)
+void calc_pass_rate_prof(std::string doc_name, std::ofstream& outputFile)
 {
     //Calculates and writes the pass rate per professor
     unordered_map<string, float> instructors_passes = count_pass_rate_prof(doc_name);
@@ -70,19 +70,19 @@ void calc_pass_rate_prof(std::string doc_name)
         }
     }
 
-    cout << "\nThis is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. "
+    outputFile << "\nThis is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. "
     "(if we only include the students that did not fail, an entirely different story is painted). "
     "From here on out. this will be referred to as 'passed.'\n\n";
 
     for (auto itr = professor_ratio.begin(); itr != professor_ratio.end(); ++itr) {
-        cout << itr -> first
+        outputFile << itr -> first
              << '\t' 
              << itr -> second 
              << '\n';
     }
 }
 
-void calc_withdraw_prof(std::string doc_name)
+void calc_withdraw_prof(std::string doc_name, std::ofstream& outputFile)
 {
     //Calculates and writes the wijthdraw rate per professor
     unordered_map<string, float> instructors_withdraws = count_withdraw_prof(doc_name);
@@ -90,8 +90,8 @@ void calc_withdraw_prof(std::string doc_name)
 
     unordered_map<string, float> professor_ratio;
 
-    // cout << "\n\n\n";
-    cout << "\nThis is the percent of students that withdraw, either officially or unofficially (W or WU). From this point, this will be "
+    // outputFile << "\n\n\n";
+    outputFile << "\nThis is the percent of students that withdraw, either officially or unofficially (W or WU). From this point, this will be "
     "referred to as 'withdrew.'\n\n";
 
     for(auto it_m1 = instructors_withdraws.cbegin(), end_m1 = instructors_withdraws.cend(),
@@ -120,7 +120,7 @@ void calc_withdraw_prof(std::string doc_name)
     // cout << "\n\n\n";
 
     for (auto itr = professor_ratio.begin(); itr != professor_ratio.end(); ++itr) {
-        cout << itr -> first
+        outputFile << itr -> first
              << '\t' 
              << itr -> second 
              << '\n';
