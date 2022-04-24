@@ -34,6 +34,7 @@ int main()
 }
 
 void analyze_data(std::string doc_name, std::string season, std::ofstream& outputFile) {
+    //Calls all of the functions needed to output all of the analyzed data
     calc_pass_rate_prof(doc_name, outputFile);
     calc_withdraw_prof(doc_name, outputFile);
     calc_pass_rate_course(doc_name, "fall", outputFile);
