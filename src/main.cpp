@@ -20,12 +20,12 @@ int main()
 
     if (course == "1115" || course == "3115" || course == "3130") {
         analyze_data(course, outputFile);
+        cout << "The analysis has been successfully written to the output file.";
     } else {
         cout << "You have entered an invalid course number.";
         outputFile << "You have entered an invalid course number.";
     }
 
-    cout << "The analysis has been successfully written to the output file.";
     return 0;   
 }
 
