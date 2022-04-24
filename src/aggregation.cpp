@@ -70,7 +70,7 @@ void calc_pass_rate_prof(std::string doc_name, std::ofstream& outputFile)
         }
     }
 
-    outputFile << "\nThis is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. "
+    outputFile << "This is the percent of students that did not fail, did not withdraw, and did not unofficially withdraw. "
     "(if we only include the students that did not fail, an entirely different story is painted). "
     "From here on out. this will be referred to as 'passed.'\n\n";
 
