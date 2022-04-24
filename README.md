@@ -63,3 +63,12 @@ the output text file.</p>
 <p>Again, since the withdrawa/pass rate per course functions are very similar, for both the overall rate and the rate per season, I will only be focusing on
 the general idea. This time, the progrma will not need an unordered map because in the function, the program will only need the total students and the number
 of students that passed/withdrew. There is no need for the instructor this time.</p>
+
+<p>Like before, the overall function will parse through the CSV file. If the function has reached the sixth dolumn (the student's grade), the program will save the grade into a variable like before and only consider this first character for the same reason. The total number of students is incremented no matter what. The total number of passed/withdrawn students, however, will only be incremented if the conditions are correct. Finally, the function will return the passed/withdrawn students divided by the total number of students and write it to the output file.</p>
+
+<p>There are some slight differences between the overall function and the functions that calculate the pass/withdrawal rate per term (Spring or Fall). One primary
+difference is that the per season functions will store an array of terms the function will check and match. The program did not do this in the previously described overall functions. The contents of the array of terms depends on whether the program is looking for the Spring or the Fall semester.</p>
+
+<p>Another difference is that, now, the function must also check the fourth column (the term id) along with the sixth column (the student's grade). When checking the term id, the function must now save the term id into a variable. Once the program has done this and has reached the student's grade, the program must also check that the previously saved term id variable is contained in the term array that must be checked. If this condition is true, the program executes as normal.</p>
+
+<p>Finally, there is another additional condition that the program most execute before printing the percent to the output file. If the count returned a value that is not a number (nan), this means that, in the CSV file, there were no terms that matched with the terms that were given in the terms array. In this case, a unique indication is written to the output file stating that there were no terms found for the provided season. Otherwise, the program will simply print the percent like usual.</p>
