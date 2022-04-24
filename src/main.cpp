@@ -11,8 +11,7 @@ void analyze_data(std::string doc_name, std::string season, std::ofstream& outpu
 int main()
 {
     string course;
-    string season;
-
+    
     cout << "Please enter the name of the course you would like to analyze (1115, 3115, or 3130). Do not include the extension.\n";
     cin >> course;
 
