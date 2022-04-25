@@ -12,7 +12,7 @@ bool in_array(const std::string &value, const std::vector<std::string> &array);
 float count_overall_withdraw_course(std::string doc_name)
 {
     // Calculates the total number of students that withdrew per course
-    std::ifstream document("../data/" + doc_name + ".csv");
+    std::ifstream document("./data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -49,7 +49,7 @@ float count_overall_withdraw_course(std::string doc_name)
 float count_overall_pass_course(std::string doc_name)
 {
     // Calculates the total number of students that passed per course
-    std::ifstream document("../data/" + doc_name + ".csv");
+    std::ifstream document("./data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -86,7 +86,7 @@ float count_overall_pass_course(std::string doc_name)
 float count_withdraw_course(std::string doc_name, std::string season)
 {
     // Calculates the total number of students that withdrew per course
-    std::ifstream document("../data/" + doc_name + ".csv");
+    std::ifstream document("./data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -139,7 +139,7 @@ float count_withdraw_course(std::string doc_name, std::string season)
 float count_passed_course(std::string doc_name, std::string season)
 {
     // Calculates the total number of students that passed per course
-    std::ifstream document("../data/" + doc_name + ".csv");
+    std::ifstream document("./data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -196,7 +196,7 @@ float count_passed_course(std::string doc_name, std::string season)
 unordered_map<string, float> count_total_students_prof(std::string doc_name)
 {
     // Calculates the total number of students per professor
-    std::ifstream document("../data/" + doc_name + ".csv");
+    std::ifstream document("./data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -254,7 +254,7 @@ unordered_map<string, float> count_total_students_prof(std::string doc_name)
 unordered_map<string, float> count_pass_rate_prof(std::string doc_name)
 {
     // Calculates the pass rate of each instructor
-    std::ifstream document("../data/" + doc_name + ".csv");
+    std::ifstream document("./data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
@@ -314,7 +314,7 @@ unordered_map<string, float> count_withdraw_prof(std::string doc_name)
 {
     // Calculates the withdraw rate of each instructor. Note that we do not need to calculate the total number of students again in this function
     // because the total will be the same for each professor regardless.
-    std::ifstream document("../data/" + doc_name + ".csv");
+    std::ifstream document("./data/" + doc_name + ".csv");
     std::string token;
     std::string instructor;
     std::string grade;
