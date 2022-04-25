@@ -18,7 +18,7 @@ int main()
     cin >> course;
 
     ofstream outputFile;
-    outputFile.open("/output" + course + ".txt");
+    outputFile.open("./output" + course + ".txt");
 
     if (course == "1115" || course == "3115" || course == "3130") {
         analyze_data(course, outputFile);
