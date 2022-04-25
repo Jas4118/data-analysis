@@ -75,4 +75,4 @@ difference is that the per season functions will store an array of terms the fun
 
 <h2 align="center">Additional Notes</h2>
 
-<p>You may find some output files with both correct inputs and incorrect inputs in the "completed" subfolder of the "output" folder.</p>
+<p>You may find some output files with both correct inputs and incorrect inputs in the "completed" subfolder of the "output" folder. Also please note that this program was meant to be run from the PuTTY terminal and will only work properly if done so. Initially, this program was created to be run in VS code, but after testing this in PuTTY and having the program not function correctly, I have altered the paths so that it works in PuTTY now but no longer in VS code.</p>
