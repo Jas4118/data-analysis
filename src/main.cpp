@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <algorithm>
 
+using namespace std;
+
 #include "aggregation.cpp"
 
 void analyze_data(std::string doc_name, std::ofstream& outputFile);

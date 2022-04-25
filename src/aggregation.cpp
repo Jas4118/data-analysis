@@ -3,6 +3,8 @@
 #include <unordered_map>
 #include <cmath>
 
+using namespace std;
+
 #include "file-manip.cpp"
 
 void calc_overall_withdraw_course(std::string doc_name, std::ofstream &outputFile)
